@@ -8,10 +8,10 @@
 #   name: nehrman.ansible-role-azure-lb
 #   version: master
 
-# - src: https://github.com/nehrman/ansible-role-rhv.git
-#   scm: git
-#   name: nehrman.ansible-role-rhv
-#   version: master
+- src: https://github.com/nehrman/ansible-role-rhv.git
+  scm: git
+  name: nehrman.ansible-role-rhv
+  version: master
 
 # - src: https://github.com/nehrman/ansible-role-f5.git
 #   scm: git
