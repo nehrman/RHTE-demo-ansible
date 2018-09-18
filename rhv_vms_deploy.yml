@@ -11,16 +11,19 @@
 
     - name: Deploy Linux Web Apps Instances
       include_role:
-        name: nehrman.ansible-role-azure
-        tasks_from: create_lin_web.yml
+        name: nehrman.ansible-role-rhv
+        tasks_from: main.yml
       vars:
-        instance_name: "weblx0{{ item }}"
-        instance_role: "web"
-        instance_ansible_port: "22"
-        instance_ansible_user: "testuser"
-        az_os_type_vm: "Linux"
-        az_image_offer: "CentOS"
-        az_image_publisher: "OpenLogic"
-        az_image_sku: "7.3"
-        az_ssh_pwd_enabled: "true"
-      with_sequence: count="{{ az_lx_web_count }}"
+        rhv_vmname: "{{ customer }}-weblx0{{ item }}.openhybridcloud.io"
+        rhv_vm_nic: 'eth0'
+        rhv_vm_nic_prof: 'no_filter'
+        rhv_vm_username: 'centos'
+        rhv_vm_pwd: 'password'
+        rhv_vm_ip: '147.135.178.12{{ item }}'
+        rhv_vm_gw: '147.135.178.112'
+        rhv_vm_subnet: '255.255.255.240'
+        rhv_vm_nic_onboot: true
+        rhv_vm_comment: 'web'
+        rhv_vm_dns_ip: '5.39.49.68'
+        rhv_vm_dns_search: 'openhybridcloud.io'
+      with_sequence: count="{{ rhv_lx_web_count }}"
