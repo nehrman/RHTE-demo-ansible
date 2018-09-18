@@ -11,7 +11,7 @@
 
     - name: Setup Azure Environment
       include_role:
-        name: nehrman.ansible-role-azure-nolb
+        name: nehrman.ansible-role-azure-lb
         tasks_from: setup_env_without_lb.yml
 
     - name: Deploy Windows Web Apps Instances
@@ -20,7 +20,6 @@
         tasks_from: create_win_web.yml
       vars:
         instance_name: "webwin0{{ item }}"
-        instance_role: "web"
         instance_ansible_port: "5986"
         instance_ansible_user: "testuser"
         instance_win_initial_password: "P@ssw0rd01"
@@ -36,7 +35,6 @@
         tasks_from: create_lin_web.yml
       vars:
         instance_name: "weblx0{{ item }}"
-        instance_role: "web"
         instance_ansible_port: "22"
         instance_ansible_user: "testuser"
         az_os_type_vm: "Linux"
