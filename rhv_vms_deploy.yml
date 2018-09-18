@@ -20,7 +20,7 @@
         rhv_vm_username: 'centos'
         rhv_vm_pwd: 'password'
         rhv_vm_ip: '147.135.178.12{{ item }}'
-        rhv_vm_gw: '147.135.178.112'
+        rhv_vm_gw: '147.135.178.126'
         rhv_vm_subnet: '255.255.255.240'
         rhv_vm_nic_onboot: true
         rhv_vm_comment: 'web'
