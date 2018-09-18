@@ -1,34 +1,13 @@
 ---
-- name: Deploy {{ az_environment }} environment on Azure
+- name: Deploy {{ rhv_environment }} environment on RHV
   hosts: localhost
   connection: local
   gather_facts: false
 
   vars:
-    az_environment: dev
+    rhv_environment: dev
 
   tasks:
-
-    - name: Setup Azure Environment
-      include_role:
-        name: nehrman.ansible-role-azure
-        tasks_from: setup_env_with_lb.yml
-
-    - name: Deploy Windows Web Apps Instances
-      include_role:
-        name: nehrman.ansible-role-azure
-        tasks_from: create_win_web.yml
-      vars:
-        instance_name: "webwin0{{ item }}"
-        instance_role: "web"
-        instance_ansible_port: "5986"
-        instance_ansible_user: "testuser"
-        instance_win_initial_password: "P@ssw0rd01"
-        az_os_type_vm: "Windows"
-        az_image_name: "w2k12r2template-image"
-        az_image_resource_group: "templates"
-      with_sequence: count="{{ az_win_web_count }}"
-
 
     - name: Deploy Linux Web Apps Instances
       include_role:
