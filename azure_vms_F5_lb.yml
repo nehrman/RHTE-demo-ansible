@@ -12,4 +12,4 @@
         tasks_from: add_node.yml
       vars:
         bigip_node_ip: "{{ hostvars[item]['private.ip'] }}"
-      with_items: "{{ scope }}"
+      with_items: "{{ groups[{{ scope }}] }}"
