@@ -11,5 +11,5 @@
         name: nehrman.ansible-role-f5
         tasks_from: add_node.yml
       vars:
-        bigip_node_ip: "{{ hostvars[item]['private.ip'] }}"
+        bigip_node_ip: "{{ hostvars[item]['private_ip'] }}"
       with_items: "{{ groups[{{ scope }}] }}"
