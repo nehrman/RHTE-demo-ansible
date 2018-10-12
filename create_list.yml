@@ -1,5 +1,5 @@
 ---
-- hosts: eap
+- hosts: "*eap"
   
   tasks: 
 
