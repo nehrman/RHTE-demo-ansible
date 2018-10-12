@@ -4,7 +4,7 @@
   tasks: 
 
     - set_fact:
-        ips_list: "{{ groups['eap']| map('extract', hostvars,'ansible_host')| list }}"
+        ips_list: "{{ groups['eap'] | map('extract', hostvars,'ansible_host')| list }}"
         
 #   # msg is constructed from inventory group 'redis'
 #     - debug:
@@ -16,4 +16,4 @@
     
 
     - debug:
-        msg: "{{ ips_lists }}"
+        msg: "{{ ips_list }}"
