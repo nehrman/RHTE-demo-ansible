@@ -1,0 +1,12 @@
+---
+- hosts: eap
+  
+  tasks: 
+
+  # msg is constructed from inventory group 'redis'
+    - debug:
+        msg: "{{ ips_list | join(',') }}"
+      vars:
+        eap_nodes: "{{ groups['eap'] | difference([ansible_host]) }}"
+        eap_port: 7600
+        ips_list: "{{ eap_nodes | map('regex_replace','$',':'+eap_port|string) | list }}"
