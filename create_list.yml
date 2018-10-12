@@ -9,4 +9,4 @@
       vars:
         eap_nodes: "{{ ansible_host }}"
         eap_port: 7600
-        ips_list: "{{ eap_nodes | map('regex_replace','$',':'+eap_port|string) | list }}"
+        ips_list: "{{ eap_nodes | map(':'+eap_port|string) | list }}"
