@@ -3,7 +3,7 @@
   
   tasks: 
 
-    - set_facts:
+    - set_fact:
         ips_list: ["{{ hostvars.values()| map(attribute='ansible_host')| list}}"]
         
 #   # msg is constructed from inventory group 'redis'
