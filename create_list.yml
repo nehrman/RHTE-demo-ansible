@@ -16,4 +16,4 @@
     
 
     - debug:
-        msg: "{{ ip_lists }}"
+        msg: "{{ ips_lists }}"
