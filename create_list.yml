@@ -3,13 +3,16 @@
   
   tasks: 
 
-  # msg is constructed from inventory group 'redis'
-    - debug:
-        msg: "{{ ips_list  | join(',') }}"
-      vars:
- #       eap_nodes: "{{ ansible_host }}"
-        eap_port: 7600
+    - set_facts:
         ips_list: ["{{ hostvars.values()| map(attribute='ansible_host')| list}}"]
+        
+#   # msg is constructed from inventory group 'redis'
+#     - debug:
+#         msg: "{{ ips_list  | join(',') }}"
+#       vars:
+#  #       eap_nodes: "{{ ansible_host }}"
+#         eap_port: 7600
+#         ips_list: ["{{ hostvars.values()| map(attribute='ansible_host')| list}}"]
     
 
     - debug:
