@@ -7,6 +7,6 @@
     - debug:
         msg: "{{ ips_list | join(',') }}"
       vars:
-        eap_nodes: "{{ ansible_host }}"
+ #       eap_nodes: "{{ ansible_host }}"
         eap_port: 7600
-        ips_list: "{{ eap_nodes | map('lower') | list }}"
+        ips_list: "{{ hostvars | map('ansible_host') | list }}"
