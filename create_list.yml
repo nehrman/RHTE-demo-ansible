@@ -1,10 +1,10 @@
 ---
-- hosts: "*eap"
+- hosts: eap
   
   tasks: 
 
     - set_fact:
-        ips_list: ["{{ hostvars.values()| map(attribute='ansible_host')| list}}"]
+        ips_list: "{{ groups['eap'| map('extract', hostvars,'ansible_host')| list }}"
         
 #   # msg is constructed from inventory group 'redis'
 #     - debug:
@@ -12,7 +12,7 @@
 #       vars:
 #  #       eap_nodes: "{{ ansible_host }}"
 #         eap_port: 7600
-#         ips_list: ["{{ hostvars.values()| map(attribute='ansible_host')| list}}"]
+#         ips_list: {{ groups['eap'| map('extract', hostvars,'ansible_host')| list }}
     
 
     - debug:
